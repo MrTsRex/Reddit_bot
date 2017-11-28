@@ -20,6 +20,7 @@ def main():
 			print("hi")
 			process_comments(comment)
 	except Exception as e:
+		print("Going to sleep for 10 minutes")
 		time.sleep(600)
 		main()
 
