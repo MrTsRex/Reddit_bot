@@ -1,5 +1,6 @@
 import praw
 import obot
+import time
 
 
 
@@ -12,11 +13,17 @@ phrases_to_look_for = ("I am ugly", "I am not worth it",
 already_done_comments = []
 
 def main():
-	r = obot.login()
-	subreddit = r.subreddit('test') #fetch top hot 15 submissions from each subreddit 
-	for comment in subreddit.stream.comments():
-		print("hi")
-		process_comments(comment)
+	try:
+		r = obot.login()
+		subreddit = r.subreddit('test') #fetch top hot 15 submissions from each subreddit 
+		for comment in subreddit.stream.comments():
+			print("hi")
+			process_comments(comment)
+	except Exception as e:
+		time.sleep(600)
+		main()
+
+	
 
 def process_comments(comment):
 	print("hello")
